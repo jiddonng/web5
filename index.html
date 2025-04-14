@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>numbernumbernumber</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    .box {
+      position: absolute;
+      width: 4vw; height: 4vh;
+      text-align: center;
+      line-height: 4vh;
+      font-size: 9pt;
+      border-radius: 5px;
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+<script>
+let texts = "";
+let total = 200;
+
+for (let i = 0; i < total; i++) {
+  let left = Math.random() * 96;
+  let top = Math.random() * 96;
+  let r = parseInt(Math.random() * 50 + 150);
+  let g = parseInt(Math.random() * 105 + 150);
+  let b = parseInt(Math.random() * 105 + 180);
+  let num = parseInt(Math.random() * 99) + 1;
+
+  texts += `<div class='box' id='box${i}'
+            style='left:${left}vw; top:${top}vh;
+                   background-color:rgb(${r},${g},${b});'>
+            ${num}
+          </div>`;
+}
+document.write(texts);
+
+for (let i = 0; i < total; i++) {
+  let box = document.getElementById("box" + i);
+
+  box.addEventListener("mouseover", function() {
+    box.style.transform = "scale(1.8)";
+    box.style.zIndex = 10;
+  });
+
+  box.addEventListener("mouseout", function() {
+    box.style.transform = "scale(1)";
+    box.style.zIndex = 1;
+  });
+
+  box.addEventListener("click", function() {
+    alert("Good Luck!");
+  });
+}
+</script>ㄴ
+</body>
+</html>
